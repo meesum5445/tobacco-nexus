@@ -181,7 +181,7 @@
             </div>
         </div>
         @if($blogpassedtoview->writer_id == Auth::id())
-                <a href="{{route('mybloginformationform', ['blog_id' => $blogpassedtoview->id])}}" class="change-link"><button class="changeinformation-button">Change Blog Information</button></a>      
+                <a href="{{route('mybloginformationform', ['blog_id' => $blogpassedtoview->id])}}" class="change-link"><button class="changeinformation-button">Edit Blog</button></a>      
         @endif
         <p class="blog-description">{{ $blogpassedtoview->description }}</p>
     </div>
