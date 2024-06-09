@@ -118,7 +118,7 @@
         @foreach ($documentspassedtoview as $document)
             <div class="product-item">
                 <img src="data:image/png;base64,{{ base64_encode($document->image) }}" alt="Document Image" class="product-image" onclick="showImageModal(this.src)">
-                <div class="product-detail"><strong>Username:</strong> {{$document->user_id}}</div>
+                <div class="product-detail"><strong>Username:</strong> {{$document->username}}</div>
                 <div class="product-detail"><strong>Contact No:</strong> {{$document->contact_no}}</div>
             </div>
             <form action="{{ route('verifydocument',['user_id'=>$document->user_id]) }}" method="POST">

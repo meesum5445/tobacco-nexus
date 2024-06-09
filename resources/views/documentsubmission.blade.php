@@ -90,6 +90,12 @@
             <label for="document_image" class="file-input-label">Choose File</label>
         </div>
         <input type="submit" value="Submit" class="submit-btn">
+        @if(Auth::user()->account_type==0)
+            <h2>SUBMIT YOUR IDENTITY CARD</h2>
+        @elseif(Auth::user()->account_type==1)
+            <h2>SUBMIT YOUR LICENCE DOCUMENT</h2>
+        @endif
     </form>
+    
 </body>
 </html>
