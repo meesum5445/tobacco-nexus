@@ -25,4 +25,40 @@ class writer extends Controller
         );
         return redirect()->route('blogpublishingform');
     }
+    function mybloginformationformCall(Request $request)
+    {
+        if ($request->hasFile('image'))
+        {
+            DB::statement("
+            UPDATE blogs
+            SET title =?,
+                image=?,
+                description=?
+            WHERE id=?
+            ",
+            [
+                $request->input('title'), 
+                file_get_contents($request->file('image')), 
+                $request->input('description'), 
+                $request->  input('blog_id'),           
+            ]
+            );
+        }
+        else
+        {
+            DB::statement("
+            UPDATE blogs
+            SET title =?,
+                description=?
+            WHERE id=?
+            ",
+            [
+                $request->input('title'), 
+                $request->input('description'),      
+                $request->  input('blog_id'),           
+            ]
+            );
+        }
+        return back();
+    }
 }

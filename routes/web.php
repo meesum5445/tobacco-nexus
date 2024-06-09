@@ -51,6 +51,8 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('/blogpublishingform', [\App\Http\Controllers\pagedisplaycontroller::class,'displayblogpublishingform'])-> name('blogpublishingform');
     Route::post('/blogpublishingformCall', [\App\Http\Controllers\writer::class,'blogpublishingformCall'])-> name('blogpublishingformCall');
     Route::get('/myblogs',[\App\Http\Controllers\pagedisplaycontroller::class,'displaymyblogs'])-> name('myblogs');
+    Route::get('/mybloginformationform',[\App\Http\Controllers\pagedisplaycontroller::class,'displaymybloginformationform'])-> name('mybloginformationform');
+    Route::post('/mybloginformationformCall',[\App\Http\Controllers\writer::class,'mybloginformationformCall'])-> name('mybloginformationformCall');
 
     Route::post('/blogreview', [\App\Http\Controllers\user::class,'blogreviewCall'])-> name('blogreview');
     

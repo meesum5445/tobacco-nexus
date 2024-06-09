@@ -147,6 +147,25 @@
     font-size: 16px;
     line-height: 1.5;
 }
+.blog-details-container button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #6f4e37; /* Dark brown button background */
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.blog-details-container button:hover {
+    background-color: #8a5a44; /* Darker brown button hover */
+}
+
+.blog-details-container button:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(111, 78, 55, 0.7); /* Dark brown button shadow */
+}
 </style>
 
 @section('title', 'Blog Details')
@@ -161,6 +180,9 @@
                 <p class="blog-date">{{ $blogpassedtoview->publish_date }}</p>
             </div>
         </div>
+        @if($blogpassedtoview->writer_id == Auth::id())
+                <a href="{{route('mybloginformationform', ['blog_id' => $blogpassedtoview->id])}}" class="change-link"><button class="changeinformation-button">Change Blog Information</button></a>      
+        @endif
         <p class="blog-description">{{ $blogpassedtoview->description }}</p>
     </div>
     @if(Auth::check())

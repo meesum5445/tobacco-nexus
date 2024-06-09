@@ -239,6 +239,17 @@ class pagedisplaycontroller extends Controller
         }
         return redirect()->route('home');
     }
+    function displaymybloginformationform(Request $request)
+    {
+        $blogfromdb=DB::select("
+        SELECT * FROM blogs
+        WHERE id=?;",
+        [
+            $request->blog_id
+        ]
+        );
+        return view('mybloginformationform',['blogpassedtoview'=>$blogfromdb[0]]);
+    }
     function displaycart(Request $request)
     {
         $count=DB::select("SELECT count(*) AS count FROM documents WHERE user_id=?;",[Auth::id()])[0]->count;
