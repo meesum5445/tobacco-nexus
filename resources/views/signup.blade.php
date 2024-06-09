@@ -109,7 +109,6 @@
                 <option value="0">Customer</option>
                 <option value="1">Seller</option>      
                 <option value="2">Writer</option>
-                <option value="3">Manager</option>
             </select>
             
             <input type="submit" value="Sign Up">

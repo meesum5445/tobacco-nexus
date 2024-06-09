@@ -12,7 +12,7 @@ class seller extends Controller
     {
         
         DB::statement("
-        INSERT INTO products (seller_id,name, price,image,description,category_id,availability,active,shipment_method_id) 
+        INSERT INTO products (seller_id,name, price,image,description,category_id,instock,active,shipment_method_id) 
         VALUES (?, ?, ? , ? , ? , ? , ?, ? , ?)
         ", 
         [
@@ -22,7 +22,7 @@ class seller extends Controller
         file_get_contents($request->file('image')),
         $request->input('description'),
         $request->input('category'),
-        True,
+        $request->input('instock'),
         True,
         $request->input('shipment_method'),
         ]
@@ -40,7 +40,7 @@ class seller extends Controller
                 image=?,
                 category_id=?,
                 shipment_method_id=?,
-                availability=?
+                instock=?
             WHERE id=?
             ",
             [
@@ -49,7 +49,7 @@ class seller extends Controller
                 file_get_contents($request->file('image')), 
                 $request->input('category'), 
                 $request->input('shipment_method'), 
-                $request->input('availability') == 'true' ? true : false,
+                $request->input('instock'),
                 $request->input('product_id'), 
                 
             ]
@@ -63,7 +63,7 @@ class seller extends Controller
                 price=?,
                 category_id=?,
                 shipment_method_id=?,
-                availability=?
+                instock=?
             WHERE id=?
             ",
             [
@@ -71,7 +71,7 @@ class seller extends Controller
                 $request->input('price'), 
                 $request->input('category'), 
                 $request->input('shipment_method'),
-                $request->input('availability') == 'true' ? true : false,
+                $request->input('instock'),
                 $request->input('product_id'),
                 
             ]

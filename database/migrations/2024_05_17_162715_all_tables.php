@@ -58,7 +58,7 @@ return new class extends Migration
             image MEDIUMBLOB NOT NULL,
             description VARCHAR(255) NOT NULL,
             category_id INT NOT NULL,
-            availability BOOLEAN NOT NULL,
+            instock INT NOT NULL,
             active BOOLEAN NOT NULL,
             shipment_method_id INT NOT NULL,
             FOREIGN KEY (seller_id) REFERENCES users(id),

@@ -95,6 +95,9 @@
         <label for="description">Description:</label>
         <textarea id="description" name="description" required></textarea>
 
+        <label for="instock">Instock:</label>
+        <input type="number" id="instock" name="instock"  min=0 value=0 step="1" required>
+
         <label for="category">Category:</label>
         <select id="category" name="category" required>
             @foreach($listofcategoriespassedtoview as $category)

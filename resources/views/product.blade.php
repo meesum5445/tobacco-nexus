@@ -233,7 +233,7 @@
             </div>
 
             <div class="detail-item">
-                <span class="detail-label">Availability:</span> {{$productpassedtoview->availability == 1 ? "Available" : "Unavailable"}}
+                <span class="detail-label">Instock:</span> {{$productpassedtoview->instock}}
             </div>
             
             @if($productpassedtoview->seller_id == Auth::id())
@@ -241,23 +241,27 @@
             @endif
 
             @if(Auth::check() && Auth::user()->account_type == 0)   {{-- 0 for customer --}}
-                @if($countincartpassedtoview==0)
-                    <form action="{{route('addtocart', ['product_id' => $productpassedtoview->id])}}" method="POST">
-                        @csrf
-                        <input type="submit" value="Add To Cart" class="add-to-cart-button">
-                    </form>
-                @else
-                    <div class="flex align-items-centre">
-                        <form action="{{route('removefromcart', ['product_id' => $productpassedtoview->id])}}" method="POST">
-                            @csrf
-                            <input type="submit" value=&#8722; class="add-to-cart-button">
-                        </form>
-                        <div style="padding-left:10px"></div><h4>{{$countincartpassedtoview}}</h4><div style="padding-left:10px"></div>
+                @if($productpassedtoview->instock>0)
+                    @if($countincartpassedtoview==0)
                         <form action="{{route('addtocart', ['product_id' => $productpassedtoview->id])}}" method="POST">
                             @csrf
-                            <input type="submit" value=&#43 class="add-to-cart-button">
+                            <input type="submit" value="Add To Cart" class="add-to-cart-button">
                         </form>
-                    </div>
+                    @else
+                        <div class="flex align-items-centre">
+                            <form action="{{route('removefromcart', ['product_id' => $productpassedtoview->id])}}" method="POST">
+                                @csrf
+                                <input type="submit" value=&#8722; class="add-to-cart-button">
+                            </form>
+                            <div style="padding-left:10px"></div><h4>{{$countincartpassedtoview}}</h4><div style="padding-left:10px"></div>
+                            @if($countincartpassedtoview<$productpassedtoview->instock)
+                                <form action="{{route('addtocart', ['product_id' => $productpassedtoview->id])}}" method="POST">
+                                    @csrf
+                                    <input type="submit" value=&#43 class="add-to-cart-button">
+                                </form>
+                            @endif
+                        </div>
+                    @endif
                 @endif
                 @if($presentinwishlist==0)
                 <form action="{{route('addtowishlist', ['product_id' => $productpassedtoview->id])}}" method="POST">

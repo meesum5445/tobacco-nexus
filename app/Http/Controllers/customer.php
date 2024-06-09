@@ -128,6 +128,27 @@ class customer extends Controller
             Auth::id()
         ]
         );
+        foreach ($productsincartfromdb as $product) {
+            DB::statement("
+            UPDATE products
+            SET instock=instock-?
+            WHERE id=?",
+            [
+                $product->count,
+                $product->id
+            ]
+            );
+        }      
+        DB::statement("
+        UPDATE cart_records
+        JOIN products ON products.id = cart_records.product_id
+        SET cart_records.count = products.instock
+        WHERE cart_records.count > products.instock;
+        ");
+        DB::statement("
+        DELETE FROM cart_records
+        WHERE cart_records.count=0;"
+        );
         return redirect()->route('order',['order_id'=>$lastinsertedorder[0]->id]);
     }
     function productreviewCall(Request $request)

@@ -121,11 +121,8 @@
                 @endforeach
             </select>
 
-            <label for="availability">Availability:</label>
-            <select name="availability"  id="availability" required>
-                <option value="True" {{$productpassedtoview->availability==true?'selected':''}}>Available</option>
-                <option value="False" {{$productpassedtoview->availability==false?'selected':''}}>UnAvailable</option>
-            </select>
+            <label for="instock">Instock:</label>
+            <input type="number" id="instock" name="instock" min=0 value="{{$productpassedtoview->instock}}" step="1" required>
 
             <input type="hidden" name="product_id" value="{{$productpassedtoview->id}}" required>
             <input type="submit" value="Apply">

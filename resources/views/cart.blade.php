@@ -124,10 +124,12 @@
                     <input type="submit" value=&#8722; class="inc-dec">
                 </form>
                 <div style="padding-left:10px"></div>
-                <form action="{{route('addtocart', ['product_id' => $product->id])}}" method="POST">
-                    @csrf
-                    <input type="submit" value=&#43 class="inc-dec">
-                </form>
+                @if($product->count<$product->instock)
+                    <form action="{{route('addtocart', ['product_id' => $product->id])}}" method="POST">
+                        @csrf
+                        <input type="submit" value=&#43 class="inc-dec">
+                    </form>
+                @endif
             </div>      
             <div class="product-description">{{$product->description}}</div>
         </div>
