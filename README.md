@@ -113,6 +113,7 @@ Test Case Categories
 4. Blog Management
 Detailed Test Cases
 1. Authentication and Authorization
+
 ● Test Case 1.1: User Registration
 ○ Description: Verify that a new user can register with valid credentials.
 ○ Steps: Navigate to the registration page, enter valid details (name, email,
@@ -137,6 +138,7 @@ page.
 matches,you will be able to reset a new password.
 ○ Expected Result: User successfully sets a new password and is redirected to
 profile page.
+
 2. Product Management
 ● Test Case 2.1: Add New Product
 ○ Description: Verify that the seller successfully adds to his products.
