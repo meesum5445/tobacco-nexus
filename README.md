@@ -1,2 +1,2 @@
 # TOBACCO-NEXUS
- A platform to provde a common point and work as middle man in tobacco sales.
+ A common platform which works as middle man in tobacco sales to provide convenience and security.
